@@ -1,0 +1,23 @@
+@baseUrl = http://localhost:8080
+
+### create product
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+    "categoryId": 2,
+    "name": "Macarrao Bolonhesa",
+    "description": "macarrao com carne moida e molho de tomate",
+    "price": 29.90,
+    "isAvailable": true,
+    "preparationTimeMinutes": 20
+}
+
+### list product by id
+GET {{baseUrl}}/products/6
+
+### list all products
+GET {{baseUrl}}/products?page=0&size=10&sort=id,asc 
+
+### delete product
+DELETE  {{baseUrl}}/products/6

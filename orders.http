@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:8080
+
+### open new order
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+    "tableId": 1,
+    "note": "molho extra"
+}
+
+### list all orders
+GET {{baseUrl}}/orders?page=0&size=10&sort=openingDate,desc
+
+### find order by id
+GET {{baseUrl}}/orders/2

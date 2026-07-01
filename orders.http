@@ -14,3 +14,16 @@ GET {{baseUrl}}/orders?page=0&size=10&sort=openingDate,desc
 
 ### find order by id
 GET {{baseUrl}}/orders/2
+
+### add new item to order
+POST {{baseUrl}}/orders/2/items
+Content-Type: application/json
+
+{
+    "productId": 1,
+    "quantity": 2,
+    "note": "copo completo"
+}
+
+#### list all items by order id
+GET {{baseUrl}}/orders/2/items

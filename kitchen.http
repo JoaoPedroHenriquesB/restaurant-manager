@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:8080
+
+### list pending items
+GET {{baseUrl}}/kitchen/pending-items
+
+### list in preparation items
+GET {{baseUrl}}/kitchen/in-preparation-items
+
+### initiate preparation
+PATCH {{baseUrl}}/kitchen/initiate-preparation/3
+
+### finalize preparation
+PATCH {{baseUrl}}/kitchen/finalize-preparation/1
+
+### deliver item
+PATCH {{baseUrl}}/kitchen/deliver-item/1
+
+### cancel item
+PATCH {{baseUrl}}/kitchen/cancel-item/1

@@ -5,7 +5,7 @@ POST {{baseUrl}}/orders
 Content-Type: application/json
 
 {
-    "tableId": 1,
+    "tableId": 2,
     "note": "molho extra"
 }
 
@@ -20,7 +20,7 @@ POST {{baseUrl}}/orders/2/items
 Content-Type: application/json
 
 {
-    "productId": 1,
+    "productId": 4,
     "quantity": 2,
     "note": "copo completo"
 }

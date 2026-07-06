@@ -1,6 +1,7 @@
 package dev.joaopedrohb.restaurant_sys.domain.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import dev.joaopedrohb.restaurant_sys.domain.enums.ItemStatusOrder;
 import jakarta.persistence.Column;
@@ -44,4 +45,13 @@ public class OrderItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
+
+    @Column(name = "preparation_date")
+    private LocalDateTime preparationDate;
+
+    @Column(name = "completion_date")
+    private LocalDateTime completionDate;
+
+    @Column(name = "delivery_date")
+    private LocalDateTime deliveryDate;
 }

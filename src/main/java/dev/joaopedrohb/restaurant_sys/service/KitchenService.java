@@ -1,5 +1,6 @@
 package dev.joaopedrohb.restaurant_sys.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -38,6 +39,7 @@ public class KitchenService {
         }
 
         item.setStatus(ItemStatusOrder.IN_PREPARATION);
+        item.setPreparationDate(LocalDateTime.now());
         orderItemRepository.save(item);
 
         return KitchenItemResponse.fromEntity(item);
@@ -52,6 +54,7 @@ public class KitchenService {
         }
 
         item.setStatus(ItemStatusOrder.DONE);
+        item.setCompletionDate(LocalDateTime.now());
         orderItemRepository.save(item);
 
         return KitchenItemResponse.fromEntity(item);
@@ -66,6 +69,7 @@ public class KitchenService {
         }
 
         item.setStatus(ItemStatusOrder.DELIVERED);
+        item.setDeliveryDate(LocalDateTime.now());
         orderItemRepository.save(item);
 
         return KitchenItemResponse.fromEntity(item);

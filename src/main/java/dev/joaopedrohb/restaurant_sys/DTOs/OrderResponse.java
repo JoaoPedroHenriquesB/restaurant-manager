@@ -1,6 +1,5 @@
 package dev.joaopedrohb.restaurant_sys.DTOs;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import dev.joaopedrohb.restaurant_sys.domain.entity.Order;
@@ -11,7 +10,7 @@ public record OrderResponse(
         Long tableId,
         Integer tableNumber,
         LocalDateTime openingDate,
-        LocalDate closingDate,
+        LocalDateTime closingDate,
         OrderStatus status,
         String note) {
 

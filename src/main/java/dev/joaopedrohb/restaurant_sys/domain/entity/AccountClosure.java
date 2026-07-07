@@ -44,7 +44,7 @@ public class AccountClosure {
     private Order order;
 
     @PrePersist
-    public void prePersist(){
+    public void prePersist() {
         this.closingDate = LocalDateTime.now();
     }
 }

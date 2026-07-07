@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,23 +19,26 @@ import dev.joaopedrohb.restaurant_sys.DTOs.OrderItemResponse;
 import dev.joaopedrohb.restaurant_sys.DTOs.OrderRequest;
 import dev.joaopedrohb.restaurant_sys.DTOs.OrderResponse;
 import dev.joaopedrohb.restaurant_sys.service.OrderService;
+import dev.joaopedrohb.restaurant_sys.service.PaymentService;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
     private final OrderService orderService;
+    private final PaymentService paymentService;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderService orderService, PaymentService paymentService) {
         this.orderService = orderService;
+        this.paymentService = paymentService;
     }
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public OrderResponse openOrder(@RequestBody OrderRequest request) {
         return orderService.openOrder(request);
     }
 
-    @GetMapping()
+    @GetMapping
     public Page<OrderResponse> listOrders(Pageable pageable) {
         return orderService.listOrders(pageable);
     }
@@ -52,5 +56,10 @@ public class OrderController {
     @GetMapping("/{orderId}/items")
     public List<OrderItemResponse> listItemsByOrderId(@PathVariable Long orderId) {
         return orderService.listItemsByOrderId(orderId);
+    }
+
+    @PostMapping("/{orderId}/pay")
+    public void payOrder(@PathVariable Long orderId, @RequestParam String paymentMethod) {
+        paymentService.pay(orderId, paymentMethod);
     }
 }

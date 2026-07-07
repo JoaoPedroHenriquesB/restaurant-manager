@@ -25,10 +25,10 @@ public class KitchenWorker {
 
     @Scheduled(fixedRate = 60000)
     public void checkOverdueItems() {
-        List<OrderItem> imPreparationItems = orderItemRepository
+        List<OrderItem> inPreparationItems = orderItemRepository
                 .findItemsWithProductAndOrder(ItemStatusOrder.IN_PREPARATION);
 
-        for (OrderItem item : imPreparationItems) {
+        for (OrderItem item : inPreparationItems) {
             executorService.submit(() -> checkItem(item));
         }
     }

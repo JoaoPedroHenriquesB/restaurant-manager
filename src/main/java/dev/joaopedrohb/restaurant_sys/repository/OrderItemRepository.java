@@ -17,8 +17,8 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
     @Query("""
             SELECT i FROM OrderItem i
             JOIN FETCH i.product
-            JOIN FETCH i.order p
-            JOIN FETCH p.table p
+            JOIN FETCH i.order o
+            JOIN FETCH o.table t
             WHERE i.status = :status
             ORDER BY i.id ASC
             """)

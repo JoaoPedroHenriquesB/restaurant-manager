@@ -1,6 +1,5 @@
 package dev.joaopedrohb.restaurant_sys.domain.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import dev.joaopedrohb.restaurant_sys.domain.enums.OrderStatus;
@@ -33,7 +32,7 @@ public class Order {
     private LocalDateTime openingDate;
 
     @Column(name = "closing_date")
-    private LocalDate closingDate;
+    private LocalDateTime closingDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status = OrderStatus.OPEN;

@@ -8,6 +8,7 @@ import dev.joaopedrohb.restaurant_sys.DTOs.ProductRequest;
 import dev.joaopedrohb.restaurant_sys.DTOs.ProductResponse;
 import dev.joaopedrohb.restaurant_sys.domain.entity.Product;
 import dev.joaopedrohb.restaurant_sys.domain.entity.ProductCategory;
+import dev.joaopedrohb.restaurant_sys.exception.BusinessRuleException;
 import dev.joaopedrohb.restaurant_sys.repository.ProductCategoryRepository;
 import dev.joaopedrohb.restaurant_sys.repository.ProductRepository;
 
@@ -51,10 +52,10 @@ public class ProductService {
     }
 
     private Product findProductById(Long id) {
-        return productRepository.findById(id).orElseThrow(() -> new RuntimeException("product not found."));
+        return productRepository.findById(id).orElseThrow(() -> new BusinessRuleException("product not found"));
     }
 
     private ProductCategory findCategoryById(Long id) {
-        return productCategoryRepository.findById(id).orElseThrow(() -> new RuntimeException("category not found"));
+        return productCategoryRepository.findById(id).orElseThrow(() -> new BusinessRuleException("category not found"));
     }
 }

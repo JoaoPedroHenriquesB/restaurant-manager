@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import dev.joaopedrohb.restaurant_sys.DTOs.PaymentRequest;
 import dev.joaopedrohb.restaurant_sys.DTOs.PaymentResponse;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "payment-client", url = "${PAYMENT_SERVICE_URL}")
 public interface PaymentClient {
 
-    @PostMapping("/process-payment")
+    @PostMapping("/payments/process")
     PaymentResponse processPayment(@RequestBody PaymentRequest paymentRequest);
 
 }

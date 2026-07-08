@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import dev.joaopedrohb.restaurant_sys.domain.entity.OrderItem;
 import dev.joaopedrohb.restaurant_sys.domain.enums.ItemStatusOrder;
@@ -22,6 +23,6 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
             WHERE i.status = :status
             ORDER BY i.id ASC
             """)
-    List<OrderItem> findItemsWithProductAndOrder(ItemStatusOrder status);
+    List<OrderItem> findItemsWithProductAndOrder(@Param("status") ItemStatusOrder status);
 
 }
